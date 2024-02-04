@@ -19,6 +19,8 @@ const uri =
     ? "http://localhost:5000/getItinerary"
     : "https://planner-backend-lntu.onrender.com/";
 
+// const uri = "http://localhost:5000/getItinerary"
+
 function Travel() {
   const [itinerary, setItinerary] = useRecoilState(travelItinerary);
   const [input, setInput] = useRecoilState(travelInput)

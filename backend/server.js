@@ -9,6 +9,7 @@ app.use(cors()); // Enable CORS for all routes
 
 app.post('/getItinerary', async (req, res) => {
   try {
+    console.log("endpoint hit!");
     const response = await axios.post('https://api.getknit.ai/v1/router/run', req.body, {
       headers: {
         'x-auth-token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiMTAxNzQ3NjQwNDQ2MjExNTIxNzQ4In0sImlhdCI6MTcwNjM5NDEwNywiZXhwIjoxNzA3NDc0MTA3fQ.7kNA1fVEi3gS39M1hPmnusjaR6PfUCo96j_s0CNbUDg', // Replace with your actual auth token
