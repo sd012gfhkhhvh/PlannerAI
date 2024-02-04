@@ -17,9 +17,9 @@ import { MdHome } from "react-icons/md";
 const uri =
   process.env.NODE_ENV === "development"
     ? "http://localhost:5000/getItinerary"
-    : "https://planner-backend-lntu.onrender.com/";
+    : "https://planner-backend-lntu.onrender.com/getItinerary";
 
-// const uri = "http://localhost:5000/getItinerary"
+// const uri = "https://planner-backend-lntu.onrender.com/getItinerary"
 
 function Travel() {
   const [itinerary, setItinerary] = useRecoilState(travelItinerary);
