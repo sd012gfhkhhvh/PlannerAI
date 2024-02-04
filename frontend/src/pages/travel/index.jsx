@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import { useRef, useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from "react-router-dom"
@@ -12,6 +13,11 @@ import { travelInput, travelItinerary } from '../../store/atoms';
 import { IconContext } from "react-icons";
 import { IoCopy } from "react-icons/io5";
 import { MdHome } from "react-icons/md";
+
+const uri =
+  process.env.NODE_ENV === "development"
+    ? "http://localhost:5000/getItinerary"
+    : "https://planner-backend-lntu.onrender.com/";
 
 function Travel() {
   const [itinerary, setItinerary] = useRecoilState(travelItinerary);
@@ -32,14 +38,14 @@ function Travel() {
   const handleGetItinerary = async () => {
     console.log(input);
     try {
-      // if (input.place === "" || input.days === "") {
-      //   alert("Please Input valid data")
-      //   return;
-      // }
+      if (input.place === "" || input.days === "") {
+        alert("Please Input valid data")
+        return;
+      }
       setIsRunning(true)
       setLoading(true);
       setShowDownloadBtn(true);
-      const response = await axios.post('http://localhost:5000/getItinerary', {
+      const response = await axios.post(uri, {
         messages: [{
           "role": "system",
           "content": "Imagine you are the best travel planner in the world, who has traveled all the countries and knows everything about popular places to go, hidden gems, the best time to go, cultural places, outdoor activities, romantic destinations and activities, historic locations, and museums, wildlife attractions, cuisines to try and things and places to shop."
